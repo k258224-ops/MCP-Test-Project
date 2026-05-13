@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Welcome";
+    Layout = "_Layout";
+}
+
+<div class="hero-section" style="text-align: center; padding: 100px 20px;">
+    <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Master Your Workflow with TaskFlow Pro
+    </h1>
+    <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem;">
+        The modern task management system designed for high-performance teams and university students.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a asp-controller="Account" asp-action="Login" class="btn btn-primary" id="landing-login-btn">Get Started</a>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-outline" id="landing-register-btn">Create Account</a>
+    </div>
+</div>
+
+<div class="features-grid stats-grid" style="margin-top: 50px;">
+    <div class="card stat-card">
+        <i class="fas fa-rocket fa-2x" style="color: var(--primary); margin-bottom: 1rem;"></i>
+        <h3>Fast Performance</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Optimized for speed and efficiency.</p>
+    </div>
+    <div class="card stat-card">
+        <i class="fas fa-shield-alt fa-2x" style="color: var(--success); margin-bottom: 1rem;"></i>
+        <h3>Secure Auth</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Industry standard security protocols.</p>
+    </div>
+    <div class="card stat-card">
+        <i class="fas fa-mobile-alt fa-2x" style="color: var(--warning); margin-bottom: 1rem;"></i>
+        <h3>Responsive</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Works perfectly on all devices.</p>
+    </div>
+</div>

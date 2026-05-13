@@ -1,0 +1,64 @@
+@model TaskFlowPro.Web.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="stats-grid">
+    <div class="card stat-card" data-test="stat-total">
+        <div class="stat-value">@Model.TotalTasks</div>
+        <div class="stat-label">Total Tasks</div>
+    </div>
+    <div class="card stat-card" data-test="stat-completed" style="border-bottom: 3px solid var(--success);">
+        <div class="stat-value" style="color: var(--success);">@Model.CompletedTasks</div>
+        <div class="stat-label">Completed</div>
+    </div>
+    <div class="card stat-card" data-test="stat-pending" style="border-bottom: 3px solid var(--warning);">
+        <div class="stat-value" style="color: var(--warning);">@Model.PendingTasks</div>
+        <div class="stat-label">Pending</div>
+    </div>
+</div>
+
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h3>Recent Activity</h3>
+        <a asp-controller="Tasks" asp-action="Index" class="btn btn-outline btn-sm">View All</a>
+    </div>
+
+    @if (Model.RecentTasks.Any())
+    {
+        <table class="task-list">
+            <thead>
+                <tr style="text-align: left; color: var(--text-muted); font-size: 0.875rem;">
+                    <th style="padding: 1rem;">Task</th>
+                    <th style="padding: 1rem;">Priority</th>
+                    <th style="padding: 1rem;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model.RecentTasks)
+                {
+                    <tr class="task-item">
+                        <td>@task.Title</td>
+                        <td>
+                            <span class="badge badge-@task.Priority.ToString().ToLower()">@task.Priority</span>
+                        </td>
+                        <td>
+                            <span style="color: @(task.Status == TaskFlowPro.Web.Models.TaskStatus.Completed ? "var(--success)" : "var(--warning)")">
+                                <i class="fas @(task.Status == TaskFlowPro.Web.Models.TaskStatus.Completed ? "fa-check-circle" : "fa-clock")"></i>
+                                @task.Status
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div style="text-align: center; padding: 2rem; color: var(--text-muted);" id="empty-state">
+            <i class="fas fa-clipboard-list fa-3x" style="margin-bottom: 1rem; opacity: 0.3;"></i>
+            <p>No tasks yet. Start by creating one!</p>
+            <a asp-controller="Tasks" asp-action="Create" class="btn btn-primary" style="margin-top: 1rem;">Create Task</a>
+        </div>
+    }
+</div>

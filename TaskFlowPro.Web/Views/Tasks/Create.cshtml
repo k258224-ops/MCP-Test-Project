@@ -1,0 +1,39 @@
+@model TaskFlowPro.Web.Models.TaskItem
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<div class="card" style="max-width: 600px; margin: 0 auto;">
+    <form asp-action="Create" method="post" id="create-task-form">
+        <div class="form-group">
+            <label asp-for="Title" class="form-label">Task Title</label>
+            <input asp-for="Title" class="form-control" placeholder="What needs to be done?" data-test="task-title-input" />
+            <span asp-validation-for="Title" class="text-danger" style="font-size: 0.75rem; color: var(--danger);"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Add more details..." data-test="task-desc-input"></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label asp-for="Priority" class="form-label">Priority</label>
+                <select asp-for="Priority" class="form-control" asp-items="Html.GetEnumSelectList<TaskFlowPro.Web.Models.TaskPriority>()" data-test="task-priority-select"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="form-label">Due Date</label>
+                <input asp-for="DueDate" type="date" class="form-control" data-test="task-due-date" />
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary" style="flex: 1;" id="save-task-btn" data-test="save-task">Create Task</button>
+            <a asp-action="Index" class="btn btn-outline" style="flex: 1; text-align: center;">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

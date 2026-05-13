@@ -1,0 +1,47 @@
+@model TaskFlowPro.Web.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="auth-container">
+    <div class="card">
+        <h2 style="margin-bottom: 1.5rem; text-align: center;">Join TaskFlow Pro</h2>
+        <form asp-action="Register" method="post" id="register-form">
+            <div class="form-group">
+                <label asp-for="Username" class="form-label">Username</label>
+                <input asp-for="Username" class="form-control" id="username-input" data-test="username-input" placeholder="johndoe" />
+                <span asp-validation-for="Username" class="text-danger" style="font-size: 0.75rem; color: var(--danger);"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email Address</label>
+                <input asp-for="Email" class="form-control" id="email-input" data-test="email-input" placeholder="name@example.com" />
+                <span asp-validation-for="Email" class="text-danger" style="font-size: 0.75rem; color: var(--danger);"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" class="form-control" id="password-input" data-test="password-input" placeholder="••••••••" />
+                <span asp-validation-for="Password" class="text-danger" style="font-size: 0.75rem; color: var(--danger);"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" class="form-control" id="confirm-password-input" data-test="confirm-password-input" placeholder="••••••••" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size: 0.75rem; color: var(--danger);"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;" id="register-btn" data-test="register-submit">
+                Create Account
+            </button>
+        </form>
+        
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+            Already have an account? <a asp-action="Login" style="color: var(--primary); text-decoration: none;">Sign in</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

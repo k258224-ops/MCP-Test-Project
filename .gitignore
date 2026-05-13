@@ -1,0 +1,14 @@
+# .gitignore
+.vs/
+node_modules/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+out/
+dist/
+.DS_Store
+taskflow.db-shm
+taskflow.db-wal
