@@ -1,11 +1,12 @@
 using Microsoft.Playwright.NUnit;
+using Microsoft.Playwright;
 using NUnit.Framework.Interfaces;
 
 namespace TaskFlowPro.Tests.Helpers;
 
 public class BaseTest : PageTest
 {
-    protected string BaseUrl = "https://localhost:7036/"; // Default dev port, adjust if needed
+    protected string BaseUrl = "https://localhost:7036"; // Default dev port, adjust if needed
 
     [SetUp]
     public async Task Setup()

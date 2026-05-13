@@ -22,7 +22,4 @@
   <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
-	<PropertyGroup>
-		<NuGetAudit>false</NuGetAudit>
-	</PropertyGroup>
 </Project>
